@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="">
       <section className="flex flex-col items-center h-screen justify-center">
-        <h1 className="text-3xl font-bold">Social Network</h1>
+        <h1 className="text-3xl font-bold">Bookstore</h1>
         <div className="flex gap-5 items-center mt-5">
           <Link href="/register">Register</Link>
           <Link href="/login">Login</Link>
