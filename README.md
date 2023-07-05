@@ -1,38 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Red Social Básica - Next.js
 
-## Getting Started
+## Descripción
 
-First, run the development server:
+Este proyecto es una aplicación web de una red social básica desarrollada en Next.js. Utiliza Prisma y MongoDB como base de datos para el registro de usuarios, inicio de sesión y almacenamiento de datos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+La aplicación permite a los usuarios registrarse, iniciar sesión y mantener su sesión abierta hasta que decidan cerrarla manualmente. Una vez iniciada la sesión, los usuarios pueden acceder al panel de control donde pueden ver y administrar sus datos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Características
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Registro de usuarios: Los usuarios pueden crear una cuenta proporcionando un nombre de usuario, dirección de correo electrónico y contraseña.
+- Inicio de sesión: Los usuarios pueden iniciar sesión con sus credenciales registradas.
+- Sesión persistente: Una vez que los usuarios inician sesión, su sesión permanece abierta incluso después de cerrar y volver a abrir el navegador, hasta que realicen un cierre de sesión manual.
+- Panel de control: Los usuarios autenticados pueden acceder a un panel de control donde pueden ver y administrar sus datos personales.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Tecnologías utilizadas
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Next.js: Un framework de desarrollo web de React.js que permite la creación de aplicaciones web rápidas y eficientes.
+- Prisma: Una herramienta de base de datos ORM (Mapeo Objeto-Relacional) que simplifica la comunicación y manipulación de la base de datos.
+- MongoDB: Una base de datos NoSQL que proporciona un almacenamiento flexible y escalable para los datos de la aplicación.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Requisitos previos
 
-## Learn More
+Antes de ejecutar la aplicación, asegúrate de tener instalados los siguientes elementos:
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js: [Descargar e instalar Node.js](https://nodejs.org)
+- MongoDB: [Descargar e instalar MongoDB](https://www.mongodb.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalación
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno local:
 
-## Deploy on Vercel
+1. Clona el repositorio:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/AlvaroMartinCrespo/basic-social-network.git
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Accede al directorio del proyecto:
+
+   ```bash
+   cd nombre-repositorio
+   ```
+
+4. Instala las dependencias:
+
+  ```bash
+   npm install
+   ```
+
+5. Configuración de la base de datos:
+
+   - Crea un archivo .env.local en el directorio raíz del proyecto.
+   - Agrega la siguiente línea al archivo .env.local y reemplaza <TU_URL_MONGODB> con la URL de conexión de tu instancia de MongoDB:
+
+    ```bash
+   MONGODB_URL=<TU_URL_MONGODB>
+   ```
+
+6. Inicia la aplicación
+
+    ```bash
+   npm run dev
+   ```
+
+# Contribución
+
+Si deseas contribuir a este proyecto, sigue los pasos a continuación:
+
+1. Realiza un fork del repositorio.
+2. Crea una rama para tu nueva función o corrección de errores: git checkout -b nombre-rama.
+3. Realiza tus modificaciones y correcciones de código.
+4. Realiza commit de tus cambios: git commit -m "Descripción de los cambios".
+5. Empuja tus cambios a tu repositorio fork: git push origin nombre-rama.
+6. Crea un pull request en el repositorio original.
+
+# Licencia
+Este proyecto está licenciado bajo la Licencia MIT. Siéntete libre de utilizar, modificar y distribuir este código de acuerdo con los términos de la licencia.
+
+# Contacto
+Si tienes alguna pregunta, sugerencia o consulta sobre este proyecto, no dudes en contactarme a través de mi dirección de correo electrónico: alvaro.martin.crespo.00@gmail.com
+
+-Linkedin: [Álvaro Martín Crespo](https://www.linkedin.com/in/%C3%A1lvaro-mart%C3%ADn-crespo-bb9aa5246/)
