@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Books {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   title  String
   userId String @db.ObjectId
@@ -22,6 +22,6 @@ model User {
   name String 
   email String @unique
   hashedPassword  String
-  posts Post[]
+  books Books[]
 
 }
