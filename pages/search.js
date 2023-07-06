@@ -3,10 +3,21 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Card } from '@rewind-ui/core';
 import SpinnerLoading from '@/components/spinnerLoading';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 export default function Search() {
   const [isLoading, setLoading] = useState();
   const [books, setBooks] = useState();
-
+  const { data: session } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    // If user clicks in sign out button
+    if (!session) {
+      router.push('/');
+    }
+  }, [session]);
   const handleSubmit = async (e) => {
     https: e.preventDefault();
     setLoading(true);
@@ -16,26 +27,27 @@ export default function Search() {
     const { nameBook } = Object.fromEntries(data);
     setLoading(true);
 
-    try {
-      const req = await fetch('/api/searchBooks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: nameBook,
-        }),
-      });
-      const res = await req.json();
-      setBooks(res);
+    if (nameBook) {
+      try {
+        const req = await fetch('/api/searchBooks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: nameBook,
+          }),
+        });
+        const res = await req.json();
+        setBooks(res);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
       setLoading(false);
-    } catch (error) {
-      console.log(error);
     }
   };
-
-  if (books) console.log(books.books);
-
   return (
     <>
       <section className="container mx-auto my-10 p-5">
@@ -58,7 +70,7 @@ export default function Search() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {books.books.map((el) => {
               return (
-                <>
+                <Link href={`/book/${el.title}`} key={el.isbn}>
                   <Card>
                     <Card.Header>
                       <div className="w-full flex justify-center">
@@ -71,11 +83,13 @@ export default function Search() {
                       </div>
                     </Card.Header>
                     <Card.Body>
-                      <div className="w-full flex justify-center font-bold">{el.title}</div>
+                      <div className="w-full flex justify-center font-bold text-center px-2">{el.title}</div>
                     </Card.Body>
-                    <Card.Footer>{el.authors}</Card.Footer>
+                    <Card.Footer>
+                      <div className="w-full flex justify-center">{el.authors}</div>
+                    </Card.Footer>
                   </Card>
-                </>
+                </Link>
               );
             })}
           </div>
