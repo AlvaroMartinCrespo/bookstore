@@ -39,6 +39,7 @@ export default function Search() {
           }),
         });
         const res = await req.json();
+        console.log(res);
         setBooks(res);
         setLoading(false);
       } catch (error) {
@@ -48,6 +49,7 @@ export default function Search() {
       setLoading(false);
     }
   };
+
   return (
     <>
       <section className="container mx-auto my-10 p-5">
@@ -70,7 +72,7 @@ export default function Search() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {books.books.map((el) => {
               return (
-                <Link href={`/book/${el.title}`} key={el.isbn}>
+                <Link href={`/book/${el.id}`} key={el.isbn}>
                   <Card>
                     <Card.Header>
                       <div className="w-full flex justify-center">

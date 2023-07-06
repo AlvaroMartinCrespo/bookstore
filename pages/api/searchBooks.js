@@ -8,16 +8,18 @@ export default async function SearchBooks(req, res) {
     const peticion = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${name}`);
     const data = await peticion.json();
     const books = data.items.map((element) => {
+      const { id } = element;
       const { title, authors, pageCount } = element.volumeInfo;
       const isbn = element.volumeInfo.industryIdentifiers[0].identifier;
       return {
+        id,
         title,
         authors,
         pageCount,
         isbn,
       };
     });
-    return res.status(200).json({ books });
+    return res.status(200).json({ books, data });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
