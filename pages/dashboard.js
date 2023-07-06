@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import LoadingPage from '@/components/loadingPage';
+import DashboardUser from '@/components/dashboard';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -46,23 +48,28 @@ export default function Dashboard() {
   return (
     <section className="container mx-auto">
       {isLoading ? (
-        <div className="flex justify-center items-center h-screen">
-          <h1 className="text-4xl">Cargando</h1>
-        </div>
+        <LoadingPage />
       ) : (
-        <div className="flex flex-col h-screen  items-center justify-center ">
-          <h1 className="text-5xl font-bold">Dashboard</h1>
-          {user ? (
-            <div className="my-10 flex justify-center flex-col items-center">
-              <h1 className="text-3xl font-bold">{user.name}</h1>
-              <span className="font-xs">{user.email}</span>
-            </div>
-          ) : (
-            <></>
-          )}
-          <button onClick={handlerSignOut} className="bg-black text-white p-3">
+        <div className="flex flex-col h-screen py-10 items-center">
+          {/* <h1 className="text-5xl font-bold">Bookstore</h1> */}
+          {user ? <DashboardUser user={user} /> : <></>}
+          <button onClick={handlerSignOut} className="bg-black text-white p-3 m-5">
             Sign Out
           </button>
+          <div className="flex justify-center gap-10">
+            <Link
+              href="/books"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow"
+            >
+              Libros leídos
+            </Link>
+            <Link
+              href="/search"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow"
+            >
+              Buscar libros
+            </Link>
+          </div>
         </div>
       )}
     </section>
