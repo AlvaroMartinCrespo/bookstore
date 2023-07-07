@@ -13,11 +13,10 @@ export default function Search() {
   const { data: session } = useSession();
   const router = useRouter();
   useEffect(() => {
-    // If user clicks in sign out button
     if (!session) {
       router.push('/');
     }
-  }, [session]);
+  }, [session, router]);
   const handleSubmit = async (e) => {
     https: e.preventDefault();
     setLoading(true);
@@ -39,7 +38,6 @@ export default function Search() {
           }),
         });
         const res = await req.json();
-        console.log(res);
         setBooks(res);
         setLoading(false);
       } catch (error) {

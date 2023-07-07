@@ -1,5 +1,5 @@
 export default async function getBook(req, res) {
-  if (req.method !== 'post') {
+  if (req.method !== 'POST') {
     return res.status(500).json({ message: 'Method not allowed' });
   }
 
@@ -8,7 +8,9 @@ export default async function getBook(req, res) {
   try {
     const peticion = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${id}`);
     const data = await peticion.json();
-    return res.status(200).json({ message: 'ok', data: data });
+    const book = data.items[0].volumeInfo;
+    const { authors, title, pageCount, industryIdentifiers } = book;
+    return res.status(200).json({ message: 'ok', authors, title, pageCount, industryIdentifiers });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

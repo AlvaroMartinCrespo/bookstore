@@ -13,6 +13,7 @@ datasource db {
 model Books {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   title  String
+  isbn Int
   description String
   userId String @db.ObjectId
   user   User   @relation(fields: [userId], references: [id])
@@ -24,5 +25,4 @@ model User {
   email String @unique
   hashedPassword  String
   books Books[]
-
 }
