@@ -11,21 +11,38 @@ export default function Book() {
   const router = useRouter();
   const { data: session } = useSession();
   const id = router.query.book;
-  console.log(session);
+
   // Add a book of the db of user
   const handleAdd = async () => {
+    const { email } = session.user;
     try {
-      const peticion = await fetch('api/addBook', {
+      const peticion = await fetch('../api/addBook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: email,
-          password: password,
+          book: book,
         }),
       });
       const respuesta = await peticion.json();
+      console.log(respuesta);
+      if (peticion.ok) {
+        toast(`Libro añadido `, {
+          hideProgressBar: true,
+          autoClose: 2000,
+          type: 'success',
+          position: 'bottom-right',
+        });
+      } else {
+        toast(respuesta.message, {
+          hideProgressBar: true,
+          autoClose: 2000,
+          type: 'error',
+          position: 'bottom-right',
+        });
+      }
     } catch (error) {
       toast(error, {
         hideProgressBar: true,
@@ -37,18 +54,34 @@ export default function Book() {
   };
   // Eliminate a book of the db of user
   const handleEl = async () => {
+    const { email } = session.user;
     try {
-      const peticion = await fetch('api/elBook', {
+      const peticion = await fetch('../api/elBook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: email,
-          password: password,
+          book: book,
         }),
       });
       const respuesta = await peticion.json();
+      if (peticion.ok) {
+        toast(`Libro eliminado `, {
+          hideProgressBar: true,
+          autoClose: 2000,
+          type: 'success',
+          position: 'bottom-right',
+        });
+      } else {
+        toast('Hubo un fallo', {
+          hideProgressBar: true,
+          autoClose: 2000,
+          type: 'error',
+          position: 'bottom-right',
+        });
+      }
     } catch (error) {
       toast(error, {
         hideProgressBar: true,
@@ -63,6 +96,7 @@ export default function Book() {
     if (!session) {
       router.push('/');
     }
+
     setLoading(true);
     const fetchBook = async () => {
       try {
@@ -85,6 +119,7 @@ export default function Book() {
     };
     fetchBook();
   }, [id, session]);
+  if (book) console.log(book);
   return (
     <>
       {isLoading ? (
