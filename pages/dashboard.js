@@ -32,6 +32,7 @@ export default function Dashboard() {
             }),
           });
           const res = await req.json();
+          console.log(res);
           setUser(res.user);
           setLoading(false);
         } catch (error) {
@@ -50,8 +51,7 @@ export default function Dashboard() {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        <div className="flex flex-col h-screen py-10 items-center">
-          {/* <h1 className="text-5xl font-bold">Bookstore</h1> */}
+        <div className="flex flex-col h-screen py-10 items-center bg-slate-100">
           {user ? <DashboardUser user={user} /> : <></>}
           <button onClick={handlerSignOut} className="bg-black text-white p-3 m-5">
             Sign Out

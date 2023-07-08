@@ -19,11 +19,14 @@ export default async function Register(req, res) {
         name,
         email,
         hashedPassword,
+        books: {
+          create: [], // Puedes proporcionar aquí un array vacío o incluir objetos para crear libros específicos
+        },
       },
     });
     await prisma.$disconnect();
     return res.status(200).json({ message: 'ok', user: user });
   } catch (error) {
-    return res.status(500).json({ message: 'User already register' });
+    return res.status(500).json({ message: 'User already register', info: error.message });
   }
 }

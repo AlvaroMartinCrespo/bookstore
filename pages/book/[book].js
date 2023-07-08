@@ -118,7 +118,7 @@ export default function Book() {
       }
     };
     fetchBook();
-  }, [id, session]);
+  }, [id, session, router]);
   if (book) console.log(book);
   return (
     <>
