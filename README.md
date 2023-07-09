@@ -28,10 +28,10 @@ La aplicación está diseñada para proporcionar una experiencia de biblioteca e
 
 ## Imagenes
 
-![Captura de pantalla 1](public/img/screenshots/cap1.png)
-![Captura de pantalla 2](public/img/screenshots/cap2.png)
-![Captura de pantalla 3](public/img/screenshots/cap3.png)
-![Captura de pantalla 4](public/img/screenshots/cap4.png)
+![Captura de pantalla 1](public/screenshots/cap1.png)
+![Captura de pantalla 2](public/screenshots/cap2.png)
+![Captura de pantalla 3](public/screenshots/cap3.png)
+![Captura de pantalla 4](public/screenshots/cap4.png)
 
 ## Requisitos previos
 
