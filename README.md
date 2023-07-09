@@ -1,23 +1,34 @@
-#Red Social Básica - Next.js
+# BookstoreRS - Next.js
 
 ## Descripción
 
-Este proyecto es una aplicación web de una red social básica desarrollada en Next.js. Utiliza Prisma y MongoDB como base de datos para el registro de usuarios, inicio de sesión y almacenamiento de datos.
+Este proyecto es una aplicación web de una biblioteca en línea desarrollada en Next.js. Utiliza Prisma y MongoDB como base de datos para el registro de usuarios, inicio de sesión y almacenamiento de datos.
 
 La aplicación permite a los usuarios registrarse, iniciar sesión y mantener su sesión abierta hasta que decidan cerrarla manualmente. Una vez iniciada la sesión, los usuarios pueden acceder al panel de control donde pueden ver y administrar sus datos.
 
+La aplicación está diseñada para proporcionar una experiencia de biblioteca en línea intuitiva y fácil de usar. Los usuarios pueden registrar sus cuentas, iniciar sesión, buscar libros, guardar los libros que han leído y mantener un registro personalizado de sus actividades de lectura.
+
+(La aplicación no esta acabada)
+
 ## Características
 
-- Registro de usuarios: Los usuarios pueden crear una cuenta proporcionando un nombre de usuario, dirección de correo electrónico y contraseña.
-- Inicio de sesión: Los usuarios pueden iniciar sesión con sus credenciales registradas.
-- Sesión persistente: Una vez que los usuarios inician sesión, su sesión permanece abierta incluso después de cerrar y volver a abrir el navegador, hasta que realicen un cierre de sesión manual.
-- Panel de control: Los usuarios autenticados pueden acceder a un panel de control donde pueden ver y administrar sus datos personales.
+1. Registro de usuarios: Los usuarios pueden crear una cuenta proporcionando su nombre, dirección de correo electrónico y una contraseña segura.
+
+2. Inicio de sesión: Los usuarios registrados pueden iniciar sesión utilizando su dirección de correo electrónico y contraseña.
+
+3. Búsqueda de libros: Los usuarios pueden buscar libros en la biblioteca en línea por título, autor u otros criterios relevantes.
+
+4. Guardar libros leídos: Los usuarios pueden guardar los libros que han leído en su lista personal de libros leídos.
 
 ## Tecnologías utilizadas
 
 - Next.js: Un framework de desarrollo web de React.js que permite la creación de aplicaciones web rápidas y eficientes.
 - Prisma: Una herramienta de base de datos ORM (Mapeo Objeto-Relacional) que simplifica la comunicación y manipulación de la base de datos.
 - MongoDB: Una base de datos NoSQL que proporciona un almacenamiento flexible y escalable para los datos de la aplicación.
+
+## Imagenes
+
+
 
 ## Requisitos previos
 
