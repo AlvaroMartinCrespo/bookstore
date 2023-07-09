@@ -28,7 +28,9 @@ La aplicación está diseñada para proporcionar una experiencia de biblioteca e
 
 ## Imagenes
 
-
+![Captura de pantalla 1]()
+![Captura de pantalla 1]()
+![Captura de pantalla 1]()
 
 ## Requisitos previos
 
