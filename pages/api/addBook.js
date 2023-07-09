@@ -9,41 +9,35 @@ export default async function AddBook(req, res) {
   const isbn = book.industryIdentifiers[0].identifier;
   const author = authors[0];
   try {
-    // Check if the book is already associated with the user
-    const existingBook = await prisma.user.findUnique({
+    // Check if the user exists
+    const existingUser = await prisma.user.findUnique({
       where: { email: email },
       include: { books: true },
     });
-
-    if (existingBook.books.some((b) => b.title === title && b.isbn === isbn && b.author === author)) {
-      return res.status(500).json({ message: 'Book already exists for the user' });
-    }
-    // Create a book
-    const bookCreated = await prisma.books.create({
-      data: {
-        title,
-        isbn,
-        author,
-        user: {
-          connect: { email: email },
-        },
-      },
-    });
-    // Add book
-    const user = await prisma.user.update({
-      where: { email: email },
-      data: {
-        books: {
-          create: {
-            title,
-            isbn,
-            author,
+    // Check if exists the book
+    const isBookAdded = existingUser.books.some(
+      (book) => book.title === title && book.isbn === isbn && book.author === author
+    );
+    if (!isBookAdded) {
+      // Add book
+      const user = await prisma.user.update({
+        where: { email: email },
+        data: {
+          books: {
+            create: {
+              title,
+              isbn,
+              author,
+            },
           },
         },
-      },
-    });
+      });
+    } else {
+      return res.status(500).json({ message: 'Book already add' });
+    }
+
     await prisma.$disconnect();
-    return res.status(200).json({ message: 'ok', user: user });
+    return res.status(200).json({ message: 'ok' });
   } catch (error) {
     return res.status(500).json({ message: error.message, book });
   }
